@@ -63,7 +63,7 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 // Write - write variable into chaincode state
 // ============================================================================================================================
 func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-	var name, date, time string // Entities
+	var name, date, stim, etim string // Entities
 	var err error
 	fmt.Println("running write()")
 
