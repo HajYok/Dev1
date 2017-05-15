@@ -74,7 +74,8 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 	name = args[0]										//rename for funsies
 	date = args[1]
 	time = args[2]
-	err = stub.PutState(name, []byte(name))						//write the variable into the chaincode state
+	str := `{"name": "` + name + `", "date": "` + date + `", "time": "` + time + `"}`
+	err = stub.PutState(name, []byte(str))						//write the variable into the chaincode state
 	if err != nil {
 		return nil, err
 	}
