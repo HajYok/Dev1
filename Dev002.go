@@ -27,13 +27,6 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, errors.New("Incorrect number of arguments. Expecting 1")
 	}
 
-	var empty []string
-	jsonAsBytes, _ := json.Marshal(empty)			//marshal an emtpy array of strings to clear the index
-	err = stub.PutState(marbleIndexStr, jsonAsBytes)
-	if err != nil {
-		return nil, err
-	}
-
 	return nil, nil
 }
 
