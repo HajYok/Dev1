@@ -67,14 +67,15 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 	var err error
 	fmt.Println("running write()")
 
-	if len(args) != 3 {
+	if len(args) != 4 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 2. name of the variable and value to set")
 	}
 
 	name = args[0]										//rename for funsies
 	date = args[1]
-	time = args[2]
-	str := `{"name": "` + name + `", "date": "` + date + `", "time": "` + time + `"}`
+	stim = args[2]
+	etim = args[3]
+	str := `{"name": "` + name + `", "date": "` + date + `", "start_time": "` + stim + `", "end_time": "` + etim + `"}`
 	err = stub.PutState(name, []byte(str))						//write the variable into the chaincode state
 	if err != nil {
 		return nil, err
